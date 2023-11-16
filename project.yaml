@@ -45,5 +45,5 @@ services:
   instance_count: 1
   instance_size_slug: basic-xs
   name: bedrock
-#  run_command: heroku-php-nginx -C nginx.conf web/
+  run_command: heroku-php-nginx -C nginx.conf web/
   source_dir: / 
