@@ -1,0 +1,49 @@
+alerts:
+databases:
+- cluster_name: do-apps-test
+  db_name: wordpressdata
+  db_user: wordpress
+  engine: MYSQL
+  name: do-apps-test
+  production: true
+  version: "8"
+domains:
+- domain: wordpress.jacobharbich.com
+  type: PRIMARY
+  zone: jacobharbich.com
+envs:
+- key: WP_HOME
+  scope: RUN_AND_BUILD_TIME
+  value: 'https://wordpress.jacobharbich.com'
+- key: WP_SITEURL
+  scope: RUN_AND_BUILD_TIME
+  value: 'https://wordpress.jacobharbich.com/wp'
+- key: DATABASE_URL
+  scope: RUN_AND_BUILD_TIME
+  value: ${do-apps-test.DATABASE_URL}
+- key: DISABLE_WP_CRON
+  scope: RUN_AND_BUILD_TIME
+  value: "true"
+features:
+- buildpack-stack=ubuntu-22
+ingress:
+  rules:
+  - component:
+      name: bedrock
+    match:
+      path:
+        prefix: /
+name: oyster-app
+region: tor
+services:
+- environment_slug: php
+  github:
+    branch: do-apps-test
+    deploy_on_push: true
+    repo: jjharbich/bedrock
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xs
+  name: bedrock
+#  run_command: heroku-php-nginx -C nginx.conf web/
+  source_dir: / 
