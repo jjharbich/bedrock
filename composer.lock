@@ -464,7 +464,7 @@
         },
         {
             "name": "roots/wordpress",
-            "version": "6.3.2",
+            "version": "6.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/wordpress.git",
