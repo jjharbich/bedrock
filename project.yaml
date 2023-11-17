@@ -23,7 +23,7 @@ envs:
   value: ${do-apps-test.DATABASE_URL}
 - key: DISABLE_WP_CRON
   scope: RUN_AND_BUILD_TIME
-  value: "true"
+  value: "false"
 features:
 - buildpack-stack=ubuntu-22
 ingress:
@@ -43,7 +43,7 @@ services:
     repo: jjharbich/bedrock
   http_port: 8080
   instance_count: 1
-  instance_size_slug: basic-xs
+  instance_size_slug: professional-xs
   name: bedrock
   run_command: heroku-php-nginx -C nginx.conf web/
   source_dir: / 
